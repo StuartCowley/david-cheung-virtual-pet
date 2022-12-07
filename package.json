@@ -1,0 +1,22 @@
+{
+  "name": "virtual-pet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidCheungTW/virtual-pet.git"
+  },
+  "author": "David Cheung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidCheungTW/virtual-pet/issues"
+  },
+  "homepage": "https://github.com/DavidCheungTW/virtual-pet#readme",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
