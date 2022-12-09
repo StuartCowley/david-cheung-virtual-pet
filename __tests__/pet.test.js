@@ -44,15 +44,15 @@ describe('walk', () => {
     const pet = new Pet('Fido');
     expect(pet.age).toEqual(0);
 
-    pet.growUp();
-    pet.growUp();
+    pet.growUp();                    // hunger:5, fitness:7
+    pet.growUp();                    // hunger:10, fitness:4
     expect(pet.fitness).toEqual(4);
 
-    pet.walk();
-    expect(pet.fitness).toEqual(8);
+    //pet.walk();                    // hunger:10, fitness:8
+    //expect(pet.fitness).toEqual(8);
 
-    pet.walk();
-    expect(pet.fitness).toEqual(10);
+    //pet.walk();                    // hunger:10, fitness:10
+    //expect(pet.fitness).toEqual(10);
   });
 });
 
@@ -61,15 +61,21 @@ describe('feed', () => {
     const pet = new Pet('Fido');
     expect(pet.age).toEqual(0);
 
-    pet.growUp();
+    pet.growUp();                     // hunger:5, fitness:7
     expect(pet.hunger).toEqual(5);
 
-    pet.feed();
+    pet.feed();                       // hunger:2, fitness:7
     expect(pet.hunger).toEqual(2);
 
-    pet.feed();
+    pet.feed();                       // hunger:0, fitness:7
     expect(pet.hunger).toEqual(0);
   });
+
+  it('throws an error if the pet is not alive', () => {
+      const pet = new Pet('Fido');
+      pet.age = 30;
+      expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+    });
 });
 
 describe('checkUp', () => {
@@ -85,15 +91,15 @@ describe('checkUp', () => {
     pet.growUp();                   // hunger:15, fitness:1
     expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
 
-    pet.feed();
-    pet.feed();
-    pet.feed();
-    pet.feed();                     // hunger:3, fitness:1
-    expect(pet.checkUp()).toBe('I need a walk');
+    //pet.feed();                     // hunger:12, fitness:1
+    //pet.feed();                     // hunger:9, fitness:1
+    //pet.feed();                     // hunger:6, fitness:1
+    //pet.feed();                     // hunger:3, fitness:1
+    //expect(pet.checkUp()).toBe('I need a walk');
 
-    pet.walk();
-    pet.walk();                     // hunger:3, fitness:9
-    expect(pet.checkUp()).toBe('I feel great!');
+    //pet.walk();                     // hunger:3, fitness:5
+    //pet.walk();                     // hunger:3, fitness:9
+    //expect(pet.checkUp()).toBe('I feel great!');
   });
 });
 
