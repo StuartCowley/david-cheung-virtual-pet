@@ -40,4 +40,21 @@ Pet.prototype.feed = function() {
   }
 };
 
+// lets you know how the pet is feeling
+Pet.prototype.checkUp = function() {
+  const LIMIT_FIT = 3;
+  const LIMIT_HUNGER = 5;
+  const isHunger = this.hunger >= LIMIT_HUNGER;
+  const isNotFit = this.fitness <= LIMIT_FIT;
+  if (isHunger && isNotFit) {
+    return 'I am hungry AND I need a walk';
+  } else if (isNotFit) {
+    return 'I need a walk';
+  } else if (isHunger) {
+    return 'I am hungry';
+  } else {
+    return 'I feel great!';
+  }
+};
+
 module.exports = Pet;
