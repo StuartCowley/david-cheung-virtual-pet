@@ -42,10 +42,9 @@ describe('growUp', () => {
 describe('walk', () => {
   it('increments the fitness by 4, but max 10', () => {
     const pet = new Pet('Fido');
+    expect(pet.age).toEqual(0);
 
     pet.growUp();
-    expect(pet.fitness).toEqual(7);
-
     pet.growUp();
     expect(pet.fitness).toEqual(4);
 

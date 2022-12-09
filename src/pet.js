@@ -11,19 +11,22 @@ function Pet(name){
 // save memory
 //
 Pet.prototype.growUp = function() {
-  const moreHunger = 5;
-  const lessFitness = 3;
+  const ADD_HUNGER = 5;
+  const MINUS_FITNESS = 3;
   this.age += 1;
-  this.hunger += moreHunger;
-  this.fitness -= lessFitness;
+  this.hunger += ADD_HUNGER;
+  this.fitness -= MINUS_FITNESS;
 };
 
 // give them some exercise to boost their fitness levels
 Pet.prototype.walk = function() {
-  const maxFitness = 10;
-  const moreFitness = 4;
-  this.fitness += moreFitness;
-  if (this.fitness > maxFitness) {this.fitness = maxFitness;};
+  const MAXIMUM_FITNESS = 10;
+  const ADD_FITNESS = 4;
+  if (this.fitness + ADD_FITNESS <= MAXIMUM_FITNESS) {
+    this.fitness += ADD_FITNESS;
+  } else {
+    this.fitness = MAXIMUM_FITNESS;
+  }
 };
 
 module.exports = Pet;
