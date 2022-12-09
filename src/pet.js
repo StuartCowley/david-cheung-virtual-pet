@@ -7,6 +7,18 @@ function Pet(name){
   this.fitness = 10;    // initial value
 }
 
+// add property(getter) to Pet.prototype object ==> after it ==> reset all prototype methods
+Pet.prototype = {
+  get isAlive() {
+    const DEATH_AGE = 30;
+    const DEATH_HUNGER = 10;
+    const DEATH_FITNESS = 0;
+    return this.age < DEATH_AGE && this.hunger < DEATH_HUNGER && this.fitness > DEATH_FITNESS;
+  }
+};
+
+// after define prototype property, start to define prototype methods
+
 // all pets will share the same growUp method.
 // save memory
 //

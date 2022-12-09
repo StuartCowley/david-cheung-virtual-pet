@@ -97,4 +97,14 @@ describe('checkUp', () => {
   });
 });
 
+describe('isAlive', () => {
+  it('lets you know how the pet is feeling', () => {
+    const pet = new Pet('Fido');
+    expect(pet.isAlive).toEqual(true);     // hunger:0, fitness:10
+
+    pet.growUp();
+    pet.growUp();
+    expect(pet.isAlive).toEqual(false);     // hunger:10, fitness:4
+  });
+});
 
