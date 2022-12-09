@@ -55,3 +55,20 @@ describe('walk', () => {
     expect(pet.fitness).toEqual(10);
   });
 });
+
+describe('feed', () => {
+  it('decreases hunger level', () => {
+    const pet = new Pet('Fido');
+    expect(pet.age).toEqual(0);
+
+    pet.growUp();
+    expect(pet.hunger).toEqual(5);
+
+    pet.feed();
+    expect(pet.hunger).toEqual(2);
+
+    pet.feed();
+    expect(pet.hunger).toEqual(0);
+  });
+});
+

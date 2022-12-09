@@ -29,4 +29,15 @@ Pet.prototype.walk = function() {
   }
 };
 
+// decreases hunger level
+Pet.prototype.feed = function() {
+  const MIN_HUNGER = 0;
+  const MINUS_HUNGER = 3;
+  if (this.hunger - MINUS_HUNGER > MIN_HUNGER) {
+    this.hunger -= MINUS_HUNGER;
+  } else {
+    this.hunger = MIN_HUNGER;
+  }
+};
+
 module.exports = Pet;
