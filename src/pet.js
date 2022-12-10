@@ -5,6 +5,7 @@ function Pet(name){
   this.age = 0;         // initial value
   this.hunger = 0;      // initial value
   this.fitness = 10;    // initial value
+  this.children = [];   // initial value
 }
 
 // add property(getter) to Pet.prototype object ==> after it ==> reset all prototype methods
@@ -39,7 +40,7 @@ Pet.prototype.walk = function() {
   if (!this.isAlive) {
     throw new Error(DEATH_MSG);
   }
-  
+
   if (this.fitness + ADD_FITNESS <= MAXIMUM_FITNESS) {
     this.fitness += ADD_FITNESS;
   } else {
@@ -79,6 +80,17 @@ Pet.prototype.checkUp = function() {
   } else {
     return 'I feel great!';
   }
+};
+
+// adopt children pet
+Pet.prototype.adoptChild = function(child) {
+  this.children.push(child);
+};
+
+// haveBaby Pet object
+Pet.prototype.haveBaby = function(babyName) {
+  const child = new Pet(babyName);
+  this.children.push(child);
 };
 
 module.exports = Pet;

@@ -114,3 +114,40 @@ describe('isAlive', () => {
   });
 });
 
+describe('adoptChild: child may not be Pet object', () => {
+  it('test adoptChild result', () => {
+    const parent = new Pet('Dave');
+    const child = new Pet('Amelia');
+    parent.adoptChild(child);
+    expect(parent.children[0]).toMatchObject(child);
+  });
+
+  it('feed adopt child', () => {
+    const parent = new Pet('Dave');
+    const child = new Pet('Amelia');
+    parent.adoptChild(child);
+    expect(child.hunger).toEqual(0);
+
+    parent.children[0].growUp();
+    expect(child.hunger).toEqual(5);
+
+    parent.children[0].feed();
+    expect(child.hunger).toEqual(2);
+  });
+});
+
+describe('haveBaby: child must be Pet object', () => {
+  it('test haveBaby result', () => {
+    const parent = new Pet('Dave');
+    parent.haveBaby('Amelia');
+    expect(parent.children[0].name).toBe('Amelia');
+    expect(parent.children[0].children).toEqual([]);
+    expect(parent.children[0]).toBeInstanceOf(Pet);
+
+    parent.haveBaby('Billy');
+    expect(parent.children[1].name).toBe('Billy');
+    expect(parent.children[1].children).toEqual([]);
+    expect(parent.children[1]).toBeInstanceOf(Pet);
+  });
+});
+
